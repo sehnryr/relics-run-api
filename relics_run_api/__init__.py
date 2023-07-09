@@ -1,2 +1,3 @@
-from .history import get_history, get_history_dates
-from .index import get_index
+import relics_run_api.base
+import relics_run_api.history
+import relics_run_api.index
