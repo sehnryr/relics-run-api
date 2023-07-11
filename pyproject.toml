@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "API for the Relics Run website."
 authors = ["sehnryr <youn@melois.dev>"]
 readme = "README.md"
+license = "GPL-3.0-or-later"
 packages = [{include = "relics_run_api"}]
 
 [tool.poetry.dependencies]
