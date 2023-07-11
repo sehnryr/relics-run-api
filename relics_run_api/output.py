@@ -4,9 +4,48 @@ from typing import Dict, List, Final
 from .base import API_BASE_URL
 
 API_OUTPUT_URL: Final[str] = API_BASE_URL + "/output"
+API_OUTPUT_TYPE_DICT_URL: Final[str] = API_OUTPUT_URL + "/type_dict.json"
 API_OUTPUT_WFM_ITEMS_CATEGORIZED_URL: Final[str] = (
     API_OUTPUT_URL + "/wfm_items_categorized.json"
 )
+
+
+def get_output_type_dict() -> Dict[str, List[str]]:
+    """Get the list of types from the API.
+
+    :return: The list of types from the API.
+    :rtype: Dict[str, List[str]]
+    :raises requests.HTTPError: If there is an error with the request.
+
+    Usage::
+
+        >>> from relics_run_api import get_output_type_dict
+        >>> get_output_type_dict()
+        {
+            "Relics": [
+                "Lith K8 Relic",
+                "Axi G10 Relic",
+                "Lith H1 Relic",
+                ...
+            ],
+            "Arcanes": [
+                "Arcane Intention",
+                "Arcane Phantasm",
+                "Arcane Detoxifier",
+                ...
+            ],
+            ...
+        }
+    """
+
+    # Get the list of types from the API
+    response: Final[Response] = requests.get(API_OUTPUT_TYPE_DICT_URL)
+
+    # Check for errors
+    response.raise_for_status()
+
+    # Return the list of types
+    return response.json()
 
 
 def get_output_wfm_items_categorized() -> Dict[str, dict]:
