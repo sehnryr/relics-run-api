@@ -5,6 +5,8 @@ description = "API for the Relics Run website."
 authors = ["sehnryr <youn@melois.dev>"]
 readme = "README.md"
 license = "GPL-3.0-or-later"
+repository = "https://github.com/sehnryr/relics-run-api"
+keywords = ["relics-run", "api", "warframe"]
 packages = [{include = "relics_run_api"}]
 
 [tool.poetry.dependencies]
