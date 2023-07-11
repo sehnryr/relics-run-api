@@ -1,10 +1,11 @@
 import requests
 from typing import Dict, List, Final
 
-from relics_run_api.base import API_BASE_URL
+from .base import API_BASE_URL
 
 API_MARKET_DATA_URL: Final[str] = API_BASE_URL + "/market_data"
 API_MARKET_DATA_ITEMS_URL: Final[str] = API_MARKET_DATA_URL + "/items.json"
+
 
 def get_market_data_items() -> List[Dict[str, str]]:
     """Get the list of items for which there is data in the API.

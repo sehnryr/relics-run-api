@@ -4,7 +4,7 @@ import requests
 from requests import Response
 from typing import Any, Dict, Final
 
-from relics_run_api.base import API_BASE_URL
+from .base import API_BASE_URL
 
 API_INDEX_URL: Final[str] = API_BASE_URL + "/index/index.json.gz"
 

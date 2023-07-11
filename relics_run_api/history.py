@@ -4,7 +4,7 @@ import requests
 from requests import Response
 from typing import Dict, Final, List, Union
 
-from relics_run_api.base import API_BASE_URL
+from .base import API_BASE_URL
 
 API_HISTORY_URL: Final[str] = API_BASE_URL + "/history"
 API_HISTORY_DATE_URL: Final[str] = API_HISTORY_URL + "/price_history_{date}.json"
