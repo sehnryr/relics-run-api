@@ -1,5 +1,7 @@
 # Relics.run API
 
+[![PyPI](https://img.shields.io/pypi/v/relics-run-api) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/relics-run-api) ![PyPI - Format](https://img.shields.io/pypi/format/relics-run-api) ![PyPI - License](https://img.shields.io/pypi/l/relics-run-api)](https://pypi.org/project/relics-run-api/)
+
 This is an unofficial API for the [Relics.run](https://relics.run/) website.
 
 The API is currently in development and is subject to change.
