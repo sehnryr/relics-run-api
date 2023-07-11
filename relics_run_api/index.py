@@ -9,6 +9,7 @@ from .base import API_BASE_URL
 API_INDEX_URL: Final[str] = API_BASE_URL + "/index"
 API_INDEX_INDEX_URL: Final[str] = API_INDEX_URL + "/index.json.gz"
 API_INDEX_PRICE_DATA_URL: Final[str] = API_INDEX_URL + "/price_data.json"
+API_INDEX_SUB_TYPE_DATA_URL: Final[str] = API_INDEX_URL + "/sub_type_data.json"
 
 
 def get_index() -> Dict[str, Any]:
@@ -113,4 +114,37 @@ def get_index_price_data() -> Dict[str, Any]:
     response.raise_for_status()
 
     # Return the price data
+    return response.json()
+
+
+def get_index_sub_type_data() -> Dict[str, Any]:
+    """Get the sub type data from the API.
+
+    :return: The sub type data from the API.
+    :rtype: dict
+    :raises requests.HTTPError: If there is an error with the request.
+
+    Usage::
+
+        >>> from relics_run_api import get_index_sub_type_data
+        >>> get_index_sub_type_data()
+        {
+            "Creeping Bullseye": [
+                "R0",
+                "R5"
+            ],
+            "Arcane Barrier": [
+                "R0",
+                "R5"
+            ],
+            ...
+        }
+    """
+    # Get the sub type data from the API
+    response: Final[Response] = requests.get(API_INDEX_SUB_TYPE_DATA_URL)
+
+    # Check for errors
+    response.raise_for_status()
+
+    # Return the sub type data
     return response.json()
