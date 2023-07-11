@@ -6,7 +6,9 @@ from typing import Any, Dict, Final
 
 from .base import API_BASE_URL
 
-API_INDEX_URL: Final[str] = API_BASE_URL + "/index/index.json.gz"
+API_INDEX_URL: Final[str] = API_BASE_URL + "/index"
+API_INDEX_INDEX_URL: Final[str] = API_INDEX_URL + "/index.json.gz"
+API_INDEX_PRICE_DATA_URL: Final[str] = API_INDEX_URL + "/price_data.json"
 
 
 def get_index() -> Dict[str, Any]:
@@ -65,7 +67,7 @@ def get_index() -> Dict[str, Any]:
     """
 
     # Get the index from the API
-    response: Final[Response] = requests.get(API_INDEX_URL)
+    response: Final[Response] = requests.get(API_INDEX_INDEX_URL)
 
     # Check for errors
     response.raise_for_status()
@@ -81,3 +83,34 @@ def get_index() -> Dict[str, Any]:
 
     # Return the parsed content
     return parsed_content
+
+
+def get_index_price_data() -> Dict[str, Any]:
+    """Get the price data from the API.
+
+    :return: The price data from the API.
+    :rtype: dict
+    :raises requests.HTTPError: If there is an error with the request.
+
+    Usage::
+
+        >>> from relics_run_api import get_index_price_data
+        >>> get_index_price_data()
+        {
+            "Abating Link": "N/A",
+            "Abating Link R0": 14.0,
+            "Abating Link R3": 26.666666666666668,
+            "Abundant Mutation": "N/A",
+            "Abundant Mutation R0": 11.166666666666666,
+            "Abundant Mutation R3": 15.5,
+            ...
+        }
+    """
+    # Get the price data from the API
+    response: Final[Response] = requests.get(API_INDEX_PRICE_DATA_URL)
+
+    # Check for errors
+    response.raise_for_status()
+
+    # Return the price data
+    return response.json()
